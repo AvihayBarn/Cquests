@@ -14,4 +14,4 @@ main: main.o libmyBank.so
 	$(CC) $(FLAGS) -o main main.o ./libmyBank.so
 .PHONY: clean all
 clean:
-	rm -f *.o *.so
+	rm -f *.o

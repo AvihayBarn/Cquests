@@ -13,12 +13,12 @@
 
     void OpenAc(float DA){
  if(NumOfCustomers>=50 || DA<0){
-    printf("Bank in full Capasity or DA is not acceptable,Try later \n");
+    printf("Bank in full Capasity or DA is not acceptable,Try later\n");
  }
  
  else{
      setNewCustomer(DA);
-     printf(" %d Account Number is: \n " , Arrayindex);
+     printf("%d Account Number is:\n" , Arrayindex);
       Arrayindex++;
  }
     }
