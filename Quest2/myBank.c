@@ -1,12 +1,13 @@
 #include <stdio.h>
 #include "myBank.h"
-    
-    /*float NumOfCustomers=0;
-    static int index=901;*/
+
+      double Customers[50][2];
+      int  NumOfCustomers=0;
+      int Arrayindex=901;
  
     void setNewCustomer(float amount){
-        Customers[index-901][0]=amount;
-        Customers[index-901][1]=1;
+        Customers[Arrayindex-901][0]=amount;
+        Customers[Arrayindex-901][1]=1;
         NumOfCustomers++;
     }
 
@@ -17,14 +18,13 @@
  
  else{
      setNewCustomer(DA);
-     printf(" %d Account Number is: \n " , index);
-     float a=Customers[index-901][0];
-      index++;
+     printf(" %d Account Number is: \n " , Arrayindex);
+      Arrayindex++;
  }
     }
 
     void BalanceFac(int AccountNumber){
-  if(AccountNumber<=(index) && AccountNumber>=901 && Customers[AccountNumber-901][1]==1){
+  if(AccountNumber<=(Arrayindex) && AccountNumber>=901 && Customers[AccountNumber-901][1]==1){
     float ans;
     ans=Customers[AccountNumber-901][0];
     printf(" %f Your Balance: \n ", ans);
@@ -34,14 +34,14 @@
   }
 }
      void Deposite(int AccountNumber){
-  if(AccountNumber<=index && AccountNumber>=901 && Customers[AccountNumber-901][1]==1){
+  if(AccountNumber<=Arrayindex && AccountNumber>=901 && Customers[AccountNumber-901][1]==1){
     printf("Amount? ");
     float D;
     scanf(" %f",&D);
     if(D>0){
-    Customers[AccountNumber-index][0]=Customers[AccountNumber-index][0]+D;
+    Customers[AccountNumber-Arrayindex][0]=Customers[AccountNumber-Arrayindex][0]+D;
      float ans;
-     ans=Customers[AccountNumber-index][0];
+     ans=Customers[AccountNumber-Arrayindex][0];
      printf(" %f Your new balance is: \n ",ans);
   }
   }
@@ -50,7 +50,7 @@
   }
 }
      void Withdrawal(int AccountNumber){
-    if(AccountNumber<=index && AccountNumber>=901 && Customers[AccountNumber-901][1]==1){
+    if(AccountNumber<=Arrayindex && AccountNumber>=901 && Customers[AccountNumber-901][1]==1){
          printf("Amount? ");
     float W;
     scanf(" %f",&W);
@@ -68,19 +68,19 @@
   }
 }
     void CloseAccount(int AccountNumber){
-    if(AccountNumber<=(index-901) && Customers[AccountNumber-901][1]==1){
-         Customers[AccountNumber-901][1]==0;
+    if(AccountNumber<=950&&AccountNumber>=901 && Customers[AccountNumber-901][1]==1){
+         Customers[AccountNumber-901][1]=0;
     }        
 }
      void AddRate(float rate){
-    for (size_t i = 0; i < index-901; i++)
+    for (size_t i = 0; i < Arrayindex-901; i++)
     {
         if(Customers[i][1]==1)
              Customers[i][0]*=((100+rate)/100);
     }
 }
      void PrintAll(){
-     for (size_t i = 0; i < index-901; i++)
+     for (size_t i = 0; i < Arrayindex-901; i++)
     {
         if(Customers[i][1]==1){
             float Balance=Customers[i][0];
@@ -89,10 +89,10 @@
     }
 }
     void CloseAll(){
- for (size_t i = 0; i < index-901; i++)
+ for (size_t i = 0; i < Arrayindex-901; i++)
     {
         if(Customers[i][1]==1){
-           Customers[i][1]==0;
+           Customers[i][1]=0;
     }
   }
  } 
