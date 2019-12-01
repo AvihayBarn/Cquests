@@ -2,54 +2,60 @@
 #include "myBank.h"
 
 int main(){
+
     char ans;
-     while(ans!='E'){
-    printf("Transction Type? (O/B/D/W/I/C/P/E)");
-    scanf("%c",&ans);
-        switch (ans)
-        {
-        case 79:
+    while(ans!='E'){
+       printf("Transction Type? (O/B/D/W/I/C/P/E) \n");
+       scanf(" %c",&ans);
+
+        if(ans=='O'){
           printf("Initial Deposite? \n");
           float o;
-          scanf(" %f ",&o);
+          scanf("%f",&o);
           OpenAc(o);
-            break;
-        case 66:
+        }
+
+        else if(ans=='B'){
          printf("Account Number? \n");
           int b;
-          scanf(" %d",&b);
+          scanf("%d",&b);
            BalanceFac(b);
-           break;
-        case 'D':
+        }
+        
+       else if(ans=='D'){
           printf("Account Number? \n");
           int d;
-          scanf(" %d",&d);
+          scanf("%d",&d);
           Deposite(d);
-          break;
-        case 87:
+       }
+       else if(ans=='W'){
           printf("Account Number? \n");
           int w;
           scanf(" %d",&w);
           Withdrawal(w);
-          break;
-        case 73:
+       }
+        else if(ans=='I'){
           printf("Interesting Rate? \n");
-          float r;
-          scanf("%f",&r);
-          AddRate(w);
-          break;
-        case 67:
-          printf("Account Number? \n");
-          int i;
-          scanf("%d",&i);
-          CloseAccount(w);
-          break;
-        case 80:
-          PrintAll();
-        default:
-          printf("Transaction denied \n");
-            break;
+          float i;
+          scanf(" %f",&i);
+          AddRate(i);
         }
-    }
+        else if(ans=='C'){
+          printf("Account Number? \n");
+          int c;
+          scanf(" %d",&c);
+          CloseAccount(c);
+        }
+        else if(ans=='P'){
+          PrintAll();
+        }
+        else if(ans!='O' || ans!='B' || ans!='D' || ans!='W' || ans!='I' || ans!='C' || ans!='P' || ans!='E'){
+           printf("next transction: \n");
+        }
+        }
+       if(ans=='E'){
+          CloseAll();
+       } 
+
     return 0;
 }
