@@ -12,7 +12,7 @@ int Get_Line(char s[LINE]){
       printf("apply a letter \n");
       scanf("%c",&temp);
       s[i]=temp;
-      if(s[i-1]=='/' && s[i]=='n'){
+      if(s[i]=='\n' || s[i]=='\t'){
         size=i+1;
       break;
       }
