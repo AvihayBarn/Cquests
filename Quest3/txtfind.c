@@ -30,7 +30,7 @@ char temp;
       w[i]=temp;
       if(w[i]=='\n' || w[i]=='\t'){
         size=i+1;
-      i=LINE-1;
+      i=WORD-1;
       }
     }
     return size;
@@ -45,13 +45,13 @@ int substring(char *str1,char *str2){
 }
 
 int similar(char *s,char *t,int n){
-  if((sizeof(s)-n)!=sizeof(t)){
+  if((strlen(s)-n)!=strlen(t)){
     return 0;
   }
 int tindex=0,start,wordlen,count=0;
 bool isStart=false;
-wordlen=sizeof(t)+n;
-for(int i=0;i<sizeof(s);i++){
+wordlen=strlen(t)+n;
+for(int i=0;i<strlen(s);i++){
   if(s[i]!=t[tindex]){
     count++;
   }
@@ -60,7 +60,7 @@ if(s[i]==t[tindex] && !isStart){
    start=i;
    tindex++;
 }
-if(count==n && (i+1)==sizeof(s)){
+if(count==n && (i+1)==strlen(s)){
  if((i-start+n)==wordlen){
  return 1;
 }
@@ -74,5 +74,12 @@ isStart=false;
 return 0;
 }
 void print_line(char* str){
-
+  char* line;
+printf("add your text now \n");
+scanf("%c",line);
+ for (size_t i = 0; i < strlen(str); i++)
+ {
+ 
+ }
+ 
 }
