@@ -6,31 +6,31 @@
 #define LINE 256
 #define WORD 30
 
-int Get_Line(char s[LINE]){
+int Get_Line(char s[]){
     char temp;
     int size=0;
     for(size_t i=0;i<LINE;i++){
-      printf("apply a letter \n");
       scanf("%c",&temp);
       s[i]=temp;
-      if(s[i]=='\n'){
-        size=i+1;
-      i=LINE-1;
+      if(temp=='\n' || temp=='\0'){
+        size=i;
+        s[i]='\0';
+        i=LINE-1;
       }
     }
     return size;
     }
     
-int getword(char w[WORD]){
+int getword(char w[]){
 char temp;
     int size=0;
     for(int i=0;i<WORD;i++){
-      printf("apply a letter \n");
       scanf("%c",&temp);
       w[i]=temp;
-      if(w[i]=='\n' || w[i]=='\t'){
-        size=i+1;
+      if(temp=='\n' || temp=='\t' || temp=='\0'){
+        size=i;
       i=WORD-1;
+      w[i]='\0';
       }
     }
     return size;
@@ -38,95 +38,75 @@ char temp;
 
 
 int substring(char *str1,char *str2){
-    char *p=strstr(str1,str2);
-    if(p)
+    char *p;
+    p=strstr(str1,str2);
+    if(p){
     return 1;
+    }
     return 0;
 }
 
-int similar(char *s,char *t,int n){
-  if((strlen(s)-n)!=strlen(t)){
+int similar(char *s, char *t, int n)
+{
+  int Ssize = strlen(s), Tsize = strlen(t);
+  if ((Ssize - n) != Tsize)
+  {
     return 0;
   }
-int tindex=0,start,wordlen,count=0;
-bool isStart=false;
-wordlen=strlen(t)+n;
-for(size_t i=0;i<strlen(s);i++){
-  if(s[i]!=t[tindex]){
-    count++;
+  int tindex = 0, wordlen = Tsize + n, count = 0;
+
+  for (size_t i = 0; i <= Ssize; i++)
+  {
+    if (s[i] != t[tindex])
+    {
+      count++;
+    }
+    if (s[i] == t[tindex])
+    {
+      tindex++;
+    }
+    if (count == n && (i + 1) == Ssize && tindex == Tsize)
+    {
+      printf(" %d \t%d \t %d \n",i,tindex,count);
+      return 1;
+    }
+    if (count > n)
+    {
+      printf(" %d \n",i);
+      return 0;
+    }
+    printf(" %d \t%d \t %d \n",i,tindex,count);
   }
-if(s[i]==t[tindex] && !isStart){
-   isStart=true;
-   start=i;
-   tindex++;
+  return 0;
 }
-if(count==n && (i+1)==strlen(s)){
- if((i-start+n)==wordlen){
- return 1;
-}
-else {
-i=start;
-tindex=0;
-isStart=false;
-}
-}
-}
-return 0;
-}
+
 void print_line(char* str){
-  bool isStart=false,isEnd=false;
-  char line[strlen(str)],pr;
-  int linestart=0,linend=0,print=0;
-printf("add your text now \n");
-scanf("%c",&pr);
- for (size_t i = 0; i < strlen(str); i++)
- {
-     if(!isStart){
-       linestart=i;
-       isStart=true;
-     }
-     if(str[i]=='\n'){
-       linend=i;
-       isEnd=true;
-     }
-     if(!isEnd){
-       line[i]=str[i];
-     }
-     if(isEnd){
-      print=substring(*line,*pr);
-      if(print==1){
-        printf("%s \n",line);
+  char line[LINE];
+  int print=0,j=0;
+ for (size_t i = 0; i <LINE; i++){
+      print=Get_Line(line);
+      if(print==0){
+        break;
       }
-      linestart=i+1;
-      isEnd=false;
-      isStart=false;
-     }
+      if(substring(line,str)==1){
+        printf("%s\n",line);
+        }
+        line[0]='\0';
+      }
    }
- }
+
  void print_similar_words(char *str){
-      bool isStart=false,isEnd=false;
-      char line[strlen(str)+1],pr;
-      int lstart=0,j=0,tindex=0;
-       printf("add your text now \n");
-       scanf("%c",&pr);
- for (size_t i = 0; i < strlen(str); i++)
-   {
-     if(str[i]==pr[tindex]){
-       lstart=i+1;
-       while(j<strlen(line) && i>(strlen(str)-strlen(pr))){
-         line[j]=str[i+j];
-         j++;
-       }
-       while(j<strlen(pr) && i==(strlen(str)-strlen(pr))){
-           line[j]=str[i+j];
-           j++;
-       }
-       j=0;
-       if(similar(*line,*pr,1)==1){
-          printf("%c \n",line);
-       }
-       else 
-          i=lstart;
-       }
-     }
+       int print=0,j=0;
+  char newC[WORD];
+ for (size_t i = 0; i <LINE*LINE; i++){
+      print=getword(newC);
+      if(print==0){
+        break;
+      }
+      if(similar(str,newC,1)==1){
+        printf("%s \n",newC);
+        }
+        newC[0]='\0';
+      }
    }
+
