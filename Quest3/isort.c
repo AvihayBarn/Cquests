@@ -1,11 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
-#define ArraySize 50
+#include "isort.h"
 void printarr(int* arr,int len){
    for(int i=0;i<len-1;i++){
-        printf(" %d, ",*(arr+i));
+        printf("%d,",*(arr+i));
     }
-    printf(" %d \n",*(arr+len-1));
+    printf("%d\n",*(arr+len-1));
     printf("\n");
 }
 void shift_element(int *arr, int i) {
@@ -33,20 +33,6 @@ void insertion_sort(int *arr, int len){
 
 
 
-int main(){
-    int arr[ArraySize];
-    for(int i=0;i<ArraySize;i++){
-       // printf("Enter the number in the %d place",i);
-        *(arr+i)=rand()%40;
-       // scanf(" %d",&(*(arr+i)));
-    }
-    
-    printarr(arr,ArraySize);
-    
-    printf("\n");
-    printf("\n");
-    insertion_sort(arr,50);
-     printarr(arr,ArraySize);
-     return 0;
-}
+
+
 

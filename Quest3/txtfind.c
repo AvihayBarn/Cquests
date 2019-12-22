@@ -26,10 +26,10 @@ int getword(char word[]){
    int i = 0;
     char temp;
     scanf("%c" , &temp);
-    while ((c != '\n')&& (i < WORD )&&( c != '\0' )&& (c != '\t' )&&(c != ' ')){
-        word[i] = c;
+    while ((temp != '\n')&& (i < WORD )&&( temp != '\0' )&& (temp != '\t' )&&(temp != ' ')){
+        word[i] = temp;
         i++;
-        scanf("%c" , &c);
+        scanf("%c" , &temp);
     }
     word[i] = '\0';
     return i;

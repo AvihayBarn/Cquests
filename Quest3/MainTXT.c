@@ -1,35 +1,19 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include "txtfind.h"
-#define LINE 256
 #define WORD 30
 
 int main(){
-    char Fromtext,Operation;
+    char Operation;
     char word[WORD];
-    int count=0;
-    while((Fromtext=getc(stdin))!=' '){
-        word[count]=Fromtext;
-        count++;
+    getword(word);
+    scanf(" %c\n",&Operation);
+    if (Operation=='a')
+    {
+       print_line(word);
     }
-    word[count]='\0';
-    while((Fromtext=getc(stdin))!= '\n'){
-        if(Fromtext=='a') Operation='a';
-        if(Fromtext=='b') Operation='b';
+    if(Operation=='b'){
+        print_similar_words(word);
     }
-    while((Fromtext=getc(stdin))!='\n'){
-    }
-    //count=;
-    if(Operation=='a'){
-        print_line(word);
-        }
-
-        if(Operation=='b'){
-            print_similar_words(word);
-        }
-
-       
-
-    
     return 0;
 }
