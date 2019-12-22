@@ -15,27 +15,24 @@ int Get_Line(char s[]){
       s[i]=temp;
       if(temp=='\n' || temp=='\0'){
         size=i;
-        s[i]='\0';
+       // s[i]='\0';
         i=LINE-1;
       }
     }
     return size;
     }
     
-int getword(char w[]){
-char temp;
-    int size=0;
-    for(int i=0;i<WORD;i++){
-      scanf("%c",&temp);
-      if(temp!='\n' || temp!='\t' || temp!='\0')
-      w[i]=temp;
-      if(temp=='\n' || temp=='\t' || temp=='\0'){
-        size=i;
-      i=WORD-1;
-      }
+int getword(char word[]){
+   int i = 0;
+    char temp;
+    scanf("%c" , &temp);
+    while ((c != '\n')&& (i < WORD )&&( c != '\0' )&& (c != '\t' )&&(c != ' ')){
+        word[i] = c;
+        i++;
+        scanf("%c" , &c);
     }
-    w[size]='\0';
-    return size;
+    word[i] = '\0';
+    return i;
 }
 
 
