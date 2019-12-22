@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdbool.h>
+#include "txtfind.h"
 
 #define LINE 256
 #define WORD 30
@@ -55,7 +56,7 @@ int similar(char *s, char *t, int n)
   {
     return 0;
   }
-  int tindex = 0, wordlen = Tsize + n, count = 0;
+  int tindex = 0, count = 0;
 
   for (size_t i = 0; i <= Ssize; i++)
   {
@@ -81,7 +82,7 @@ int similar(char *s, char *t, int n)
 
 void print_line(char* str){
   char line[LINE];
-  int print=0,j=0;
+  int print=0;
  for (size_t i = 0; i <LINE; i++){
       print=Get_Line(line);
       if(print==0){
@@ -102,7 +103,7 @@ void print_line(char* str){
       if(print==0){
         break;
       }
-      if(similar(newC,str,1)==1){
+      if(similar(newC,str,1)||similar(newC,str,0)){
         printf("%s \n",newC);
         }
         newC[0]='\0';
